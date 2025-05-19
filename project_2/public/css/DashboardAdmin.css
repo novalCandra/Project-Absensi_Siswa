@@ -1,0 +1,127 @@
+ /* Font Awesome untuk ikon */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+        
+        /* Warna dasar */
+        :root {
+            --jurusan-color: #4361ee;
+            --guru-color: #f72585;
+            --siswa-color: #4cc9f0;
+            --text-light: #f8f9fa;
+            --text-dark: #212529;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .dashboard-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            position: relative;
+            background: white;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .jurusan-card {
+            border-left: 4px solid var(--jurusan-color);
+        }
+        
+        .guru-card {
+            border-left: 4px solid var(--guru-color);
+        }
+        
+        .siswa-card {
+            border-left: 4px solid var(--siswa-color);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .jurusan-card .card-icon {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--jurusan-color);
+        }
+        
+        .guru-card .card-icon {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--guru-color);
+        }
+        
+        .siswa-card .card-icon {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--siswa-color);
+        }
+        
+        .card-content {
+            flex: 1;
+        }
+        
+        .card-title {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .card-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .card-footer {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .growth-rate {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .growth-rate i {
+            margin-right: 4px;
+            font-size: 0.7rem;
+        }
+        
+        @media (max-width: 768px) {
+            .card-body {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .card-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .card-value {
+                font-size: 1.8rem;
+            }
+        }
