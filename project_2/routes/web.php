@@ -7,6 +7,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\PageGuruController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,10 @@ Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
 Route::get('/jadwal/tambah', [JadwalController::class, 'showCreateJadwal'])->name('jadwal.tambah');
 Route::post('/jadwal/post', [JadwalController::class, 'create'])->name('jadwal.post');
 Route::get('/jadwal/delete/{id}', [JadwalController::class, 'destroy'])->name('jadwal.hapus');
+
+//pageguru
+Route::get('/home/{id}',[PageGuruController::class,'home'])->name('home');
+Route::get('/jadwal',[PageGuruController::class,'jadwal'])->name('jadwal');
+Route::get('/presensi',[PageGuruController::class,'presensi'])->name('presensi');
+Route::get('/profil/{id}',[PageGuruController::class,'profil'])->name('profil');
+
