@@ -41,12 +41,12 @@
               <span class="font-bold">HOME</span>
             </a>
 
-            <a href="jadwal_page.html" class="flex items-center space-x-2">
+            <a href="{{route('jadwal',['id'=>$user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined"> event </span>
               <span class="font-bold">MENGAJAR</span>
             </a>
 
-            <a href="profile_user.html" class="flex items-center space-x-2">
+            <a href="{{route('profil',$user->id)}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined"> person </span>
               <span class="font-bold">PROFILE</span>
             </a>
@@ -55,7 +55,7 @@
         <button
           class="bg-white text-blue-900 font-semibold px-4 py-2 rounded hover:bg-gray-200"
         >
-          <a href="login_page.html">LOGOUT</a>
+          <a href="{{route('login')}}">LOGOUT</a>
         </button>
       </aside>
 
@@ -90,7 +90,7 @@
               type="text"
               name="name"
               class="w-full border border-gray-300 rounded p-2"
-              value="+62 123-780-321"
+              value="{{$userguru->no_telp}}"
             />
           </div>
 

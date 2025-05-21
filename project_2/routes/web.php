@@ -59,7 +59,7 @@ Route::get('/jadwal/delete/{id}', [JadwalController::class, 'destroy'])->name('j
 
 //pageguru
 Route::get('/home/{id}',[PageGuruController::class,'home'])->name('home');
-Route::get('/jadwal',[PageGuruController::class,'jadwal'])->name('jadwal');
+Route::get('/jadwal/{id}',[PageGuruController::class,'jadwal'])->name('jadwal');
 Route::get('/presensi',[PageGuruController::class,'presensi'])->name('presensi');
 Route::get('/profil/{id}',[PageGuruController::class,'profil'])->name('profil');
 

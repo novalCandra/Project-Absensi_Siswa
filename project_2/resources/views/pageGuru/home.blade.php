@@ -36,14 +36,14 @@
           </div>
 
           <nav class="space-y-4">
-            <a href="Home_page.html" class="flex items-center space-x-2">
+            <a href="{{route('home',['id'=>$user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined hover:text-red-900">
                 home
               </span>
               <span class="font-bold">HOME</span>
             </a>
 
-            <a href="{{route('jadwal')}}" class="flex items-center space-x-2">
+            <a href="{{route('jadwal',['id'=>$user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined"> event </span>
               <span class="font-bold">MENGAJAR</span>
             </a>
@@ -68,7 +68,7 @@
           >
             <img src="../img/avatar.png" alt="Foto Profile" class="" />
           </div>
-          <h1 class="text-4xl font-bold">Hello! {{$userguru->name}}</h1>
+          <h1 class="text-4xl font-bold">Hello! {{strtoupper($userguru->name)}}</h1>
         </div>
         <!-- Judul -->
         <h2 class="text-xl font-semibold mb-4">JADWAL HARI INI</h2>
@@ -76,19 +76,23 @@
         <!-- CARD Jadwal-->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 px-4">
           <!-- Jadwal 1 -->
-          <div
-            class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
-          >
-            <div class="bg-blue-900 text-white text-center font-bold py-2">
-              XI RPL 2
-            </div>
-            <div class="p-4 text-sm">
-              <p><b>Zaenal Arifin, S.pd</b></p>
-              <p>Ruang : Lab RPL 2</p>
-              <p>Jam Pelajaran : 6-9</p>
-              <p>Mata Pelajaran: Bahasa Indonesian</p>
-            </div>
-          </div>
+          @foreach ( $jadwalguru as $data)
+            @if ($data)
+              <div
+                class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
+              >
+                <div class="bg-blue-900 text-white text-center font-bold py-2">
+                  {{$jenjang->nama_jenjang}} {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}}
+                </div >
+                <div class="p-4 text-sm">
+                  <p><b>{{ strtoupper($userguru->name)}}</b></p>
+                  <p>Ruang : Lab {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}}</p>
+                  <p>Jam Pelajaran : {{$data->waktu_mulai}} {{$data->waktu_selesai}}</p>
+                  <p>Mata Pelajaran: {{str_replace('_',' ',$mapel->nama_mapel)}}</p>
+                </div>
+              </div>
+            @endif
+          @endforeach
           <!-- Jadwal 2 -->
           <div
             class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"

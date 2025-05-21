@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mapel;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('johndoe'),
             'role'=>'guru',
             'no_telp'=>'0888-8888-8888'
+        ]);
+
+        Mapel::factory()->create([
+            'nama_mapel'=>'Bahasa_indonesia',
         ]);
     }
 }

@@ -20,4 +20,6 @@ class Jurusan extends Model
     {
         return $this->hasMany(Kelas::class);
     }
+
+    
 }
