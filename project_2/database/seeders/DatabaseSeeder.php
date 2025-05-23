@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mapel;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +17,15 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => bcrypt('johndoe'),
+            'role'=>'guru',
+            'no_telp'=>'0888-8888-8888'
+        ]);
+
+        Mapel::factory()->create([
+            'nama_mapel'=>'Bahasa_indonesia',
         ]);
     }
 }

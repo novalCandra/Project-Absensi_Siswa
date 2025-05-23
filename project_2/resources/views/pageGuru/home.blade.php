@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      rel="shortcut icon"
+      href="../img/logo_sketsu.jpeg"
+      type="image/x-icon"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="flex min-h-screen bg-gray-100">
+      <aside
+        class="w-64 bg-blue-900 text-white p-6 flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex items-center space-x-3 mb-8">
+            <img
+              src="../img/image-removebg-preview.png"
+              alt="logo_sketsu"
+              class="w-12 h-12 rounded-full bg-white"
+            />
+            <div>
+              <h1 class="text-xl font-bold leading-tight">SMK NEGERI 1</h1>
+              <p class="text-sm">SUKOREJO</p>
+            </div>
+          </div>
+
+          <nav class="space-y-4">
+            <a href="{{route('home',['id'=>$user->id])}}" class="flex items-center space-x-2">
+              <span class="material-symbols-outlined hover:text-red-900">
+                home
+              </span>
+              <span class="font-bold">HOME</span>
+            </a>
+
+            <a href="{{route('jadwal',['id'=>$user->id])}}" class="flex items-center space-x-2">
+              <span class="material-symbols-outlined"> event </span>
+              <span class="font-bold">MENGAJAR</span>
+            </a>
+
+            <a href="{{route('profil',['id'=>$user->id])}}" class="flex items-center space-x-2">
+              <span class="material-symbols-outlined"> person </span>
+              <span class="font-bold">PROFILE</span>
+            </a>
+          </nav>
+        </div>
+        <button class="bg-white text-blue-900 font-semibold px-4 py-2 rounded hover:bg-gray-200">
+            <a href="{{route('login')}}">LOGOUT</a>
+        </button>
+      </aside>
+
+      <!-- Hero Utama -->
+      <div class="flex-1 p-8">
+        <!-- Header -->
+        <div class="flex flex-items-center gap-4 mb-6">
+          <div
+            class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl"
+          >
+            <img src="../img/avatar.png" alt="Foto Profile" class="" />
+          </div>
+          <h1 class="text-4xl font-bold">Hello! {{strtoupper($userguru->name)}}</h1>
+        </div>
+        <!-- Judul -->
+        <h2 class="text-xl font-semibold mb-4">JADWAL HARI INI</h2>
+
+        <!-- CARD Jadwal-->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 px-4">
+          <!-- Jadwal 1 -->
+          @foreach ( $jadwalguru as $data)
+            @if ($data)
+              <div
+                class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
+              >
+                <div class="bg-blue-900 text-white text-center font-bold py-2">
+                  {{$jenjang->nama_jenjang}} {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}}
+                </div >
+                <div class="p-4 text-sm">
+                  <p><b>{{ strtoupper($userguru->name)}}</b></p>
+                  <p>Ruang : Lab {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}}</p>
+                  <p>Jam Pelajaran : {{$data->waktu_mulai}} {{$data->waktu_selesai}}</p>
+                  <p>Mata Pelajaran: {{str_replace('_',' ',$mapel->nama_mapel)}}</p>
+                </div>
+              </div>
+            @endif
+          @endforeach
+          <!-- Jadwal 2 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
+          >
+            <div class="bg-blue-900 text-white text-center font-bold py-2">
+              XI RPL 1
+            </div>
+            <div class="p-4 text-sm">
+              <p><b>Zaenal Arifin, S.pd</b></p>
+              <p>Ruang : Lab RPL 1</p>
+              <p>Jam Pelajaran : 5-6</p>
+              <p>Mata Pelajaran: Bahasa Indonesian</p>
+            </div>
+          </div>
+
+          <!-- Jadwal 3 -->
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
+          >
+            <a href="{{route('presensi')}}">
+              <div class="bg-[#328E6E] text-white text-center font-bold py-2">
+                XI RPL 3
+              </div>
+              <div class="p-4 text-sm">
+                <p><b>Zaenal Arifin, S.pd</b></p>
+                <p>Ruang : Lab RPL 1</p>
+                <p>Jam Pelajaran : 1-4</p>
+                <p>Mata Pelajaran: Bahasa Indonesian</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

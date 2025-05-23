@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -18,16 +19,17 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password',);
 
         // dd($credentials);
         if(Auth::attempt($credentials)) {
             if(Auth::user()->role === 'admin') {
                 return redirect('/dashboardadmin');
             } elseif (Auth::user()->role ==='guru') {
-                return redirect('/dashboard-guru');
+                return redirect('/home/{id}');
             }
         }
+
 
         return back()->withErrors([
             'email' => 'Email atau passsword salah.',
