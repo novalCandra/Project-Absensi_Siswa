@@ -22,4 +22,6 @@ class Jurusan extends Model
     }
 
     
+
+    
 }

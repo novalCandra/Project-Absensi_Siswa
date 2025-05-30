@@ -16,7 +16,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::get();
+        $kelas = Kelas::with(['jurusan', 'jenjang'])->get();
         return view('data.kelas.tampil_kelas', compact(['kelas']));
     }
 

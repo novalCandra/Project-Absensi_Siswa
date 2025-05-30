@@ -9,6 +9,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Mapel extends Model
 {
+    /** @use HasFactory */ 
     use HasRoles, SoftDeletes, HasFactory;
 
     protected $table = 'mapels'; // nama table

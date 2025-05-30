@@ -17,9 +17,15 @@
     @foreach($jadwal as $No => $data)
     <tr>
         <td>{{ $No+1}}</td>
-        <td>{{ $data->user_id}}</td>
-        <td>{{ $data->mapel_id}}</td>
-        <td>{{ $data->kelas_id}}</td>
+        <td>{{ $data->user->name}}</td>
+        @if ($data->mapel)
+        
+        
+        <td>{{ $data->mapel->nama_mapel}}</td>
+        @else
+        <p>data tidak ditemukan</p>
+        @endif
+        <td>{{ $data->kelas->nama_kelas}}</td>
         <td>{{ $data->tanggal}}</td>
         <td>{{ $data->waktu_mulai}}</td>
         <td>{{ $data->waktu_selesai}}</td>

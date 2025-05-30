@@ -75,26 +75,29 @@
 
         <!-- CARD Jadwal-->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 px-4">
-          <!-- Jadwal 1 -->
-          @foreach ( $jadwalguru as $data)
+          <!-- Jadwal Loop -->
+          @foreach ( $findjadwal as $data)
             @if ($data)
               <div
                 class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
               >
+              <a href="{{route('presensi',['id'=>$user->id,'jadwalids'=>$data->id,'kelasid'=>$data->kelas->id,'mapelid'=>$data->mapel->id])}}">
                 <div class="bg-blue-900 text-white text-center font-bold py-2">
-                  {{$jenjang->nama_jenjang}} {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}}
+                  {{$jenjang->nama_jenjang}} {{ strtoupper($jurusan->nama_jurusan) }} {{$data->kelas->nama_kelas}}
                 </div >
                 <div class="p-4 text-sm">
                   <p><b>{{ strtoupper($userguru->name)}}</b></p>
-                  <p>Ruang : Lab {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}}</p>
+                  <p>Ruang : Lab {{ strtoupper($jurusan->nama_jurusan) }} {{$data->kelas->nama_kelas}}</p>
                   <p>Jam Pelajaran : {{$data->waktu_mulai}} {{$data->waktu_selesai}}</p>
-                  <p>Mata Pelajaran: {{str_replace('_',' ',$mapel->nama_mapel)}}</p>
+                  <p>Mata Pelajaran: {{$data->mapel->nama_mapel}}</p>
                 </div>
+                </a>
               </div>
+            @else
             @endif
           @endforeach
           <!-- Jadwal 2 -->
-          <div
+          {{-- <div
             class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
           >
             <div class="bg-blue-900 text-white text-center font-bold py-2">
@@ -106,13 +109,13 @@
               <p>Jam Pelajaran : 5-6</p>
               <p>Mata Pelajaran: Bahasa Indonesian</p>
             </div>
-          </div>
+          </div> --}}
 
           <!-- Jadwal 3 -->
-          <div
+          {{-- <div
             class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs"
           >
-            <a href="{{route('presensi')}}">
+            <a href="{{route('presensi',['id'=>$user->id])}}">
               <div class="bg-[#328E6E] text-white text-center font-bold py-2">
                 XI RPL 3
               </div>
@@ -121,7 +124,7 @@
                 <p>Ruang : Lab RPL 1</p>
                 <p>Jam Pelajaran : 1-4</p>
                 <p>Mata Pelajaran: Bahasa Indonesian</p>
-              </div>
+              </div> --}}
             </a>
           </div>
         </div>

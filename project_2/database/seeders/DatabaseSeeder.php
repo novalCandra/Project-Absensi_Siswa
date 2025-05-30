@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder
             'no_telp'=>'0888-8888-8888'
         ]);
 
-        Mapel::factory()->create([
-            'nama_mapel'=>'Bahasa_indonesia',
-        ]);
+    
     }
 }

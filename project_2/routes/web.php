@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\HalamanDataController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\JurnalController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
@@ -59,7 +60,9 @@ Route::get('/jadwal/delete/{id}', [JadwalController::class, 'destroy'])->name('j
 
 //pageguru
 Route::get('/home/{id}',[PageGuruController::class,'home'])->name('home');
-Route::get('/jadwal/{id}',[PageGuruController::class,'jadwal'])->name('jadwal');
-Route::get('/presensi',[PageGuruController::class,'presensi'])->name('presensi');
+Route::get('/presensi/{id}/{jadwalids}/{kelasid}/{mapelid}',[PageGuruController::class,'presensi'])->name('presensi');
 Route::get('/profil/{id}',[PageGuruController::class,'profil'])->name('profil');
+Route::get('/jurnal/{id}/{jadwalids}/{kelasid}/{mapelid}',[PageGuruController::class,'jurnal'])->name('jurnal');
+// Jurnal Input
+Route::post('/jurnal/post',[JurnalController::class,'store'])->name('jurnal.store');
 

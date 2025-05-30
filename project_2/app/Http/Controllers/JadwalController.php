@@ -15,7 +15,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::get();
+        $jadwal = Jadwal::with(['user','mapel','kelas'])->get();
         return view('data.jadwal.tampil_jadwal', compact('jadwal'));
     }
 

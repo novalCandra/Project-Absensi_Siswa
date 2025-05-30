@@ -34,7 +34,7 @@
           </div>
 
           <nav class="space-y-4">
-            <a href="Home_page.html" class="flex items-center space-x-2">
+            <a href="{{route('home',['id'=> $user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined hover:text-red-900">
                 home
               </span>

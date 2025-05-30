@@ -13,8 +13,8 @@
     @foreach($kelas as $No=> $data)
     <tr>
         <td>{{ $No+1}}</td>
-        <td>{{ $data->jurusan_id}}</td>
-        <td>{{ $data->jenjang_id}}</td>
+        <td>{{ $data->jurusan->nama_jurusan}}</td>
+        <td>{{ $data->jenjang->nama_jenjang}}</td>
         <td>{{ $data->nama_kelas}}</td>
         <td>
             <div class="d-flex">

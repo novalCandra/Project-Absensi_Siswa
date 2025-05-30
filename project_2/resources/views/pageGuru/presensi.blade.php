@@ -35,7 +35,7 @@
           </div>
 
           <nav class="space-y-4">
-            <a href="Home_page.html" class="flex items-center space-x-2">
+            <a href="{{route('home',['id'=>$user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined hover:text-red-900">
                 home
               </span>
@@ -47,7 +47,7 @@
               <span class="font-bold">MENGAJAR</span>
             </a>
 
-            <a href="profile_user.html" class="flex items-center space-x-2">
+            <a href="{{route('profil',['id'=>$user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined"> person </span>
               <span class="font-bold">PROFILE</span>
             </a>
@@ -66,11 +66,11 @@
         <div class="bg-blue-900 text-white rounded-lg p-6 mb-6">
           <h2 class="text-4xl font-bold text-center">Presensi Siswa</h2>
           <div class="mt-2">
-            <p class="font-semibold text-4xl">XI RPL 3</p>
-            <p class="font-semibold text-4xl">Zaenal Arifin, S Pd.</p>
-            <p class="text-right">Jam Pelajaran : 6-9</p>
-            <p class="text-right">Mata Pelajaran : Produktif</p>
-            <p class="text-right">Guru Pengajar : Zaenal Arifin</p>
+            <p class="font-semibold text-4xl">{{$jenjang->nama_jenjang}} {{ strtoupper($jurusan->nama_jurusan) }} {{$kelas->nama_kelas}} </p>
+            <p class="font-semibold text-4xl">{{$userguru->name}}</p>
+            <p class="text-right">Jam Pelajaran : {{\Carbon\Carbon::parse($jadwal->waktu_mulai)->format('H:i')}} : {{\Carbon\Carbon::parse($jadwal->waktu_selesai)->format('H:i')}}</p>
+            <p class="text-right">Mata Pelajaran : {{$mapel->nama_mapel}}</p>
+            <p class="text-right">Guru Pengajar : {{$userguru->name}}</p>
           </div>
         </div>
 
@@ -87,12 +87,13 @@
               </tr>
             </thead>
 
-            <!-- Isi Table pertama -->
+            <!-- Isi Table Loop -->
+            @foreach ($siswa as $data)
             <tbody>
               <tr class="hover:bg-gray-100">
-                <td class="px-4 py-2 border text-center">1.</td>
-                <td class="px-4 py-2 border text-center">Agnes</td>
-                <td class="px-4 py-2 border text-center">0045678901</td>
+                <td class="px-4 py-2 border text-center">{{$data->id}}.</td>
+                <td class="px-4 py-2 border text-center">{{$data->nama_siswa}}</td>
+                <td class="px-4 py-2 border text-center"></td>
                 <td class="px-4 py-2 border space-y-2">
                   <!-- Membuat Class untuk center kan input:radio nya -->
                   <div class="flex items-center justify-center gap-x-6">
@@ -132,7 +133,8 @@
                 </td>
               </tr>
             </tbody>
-            <!-- Isi Table Kedua -->
+            @endforeach
+            {{-- <!-- Isi Table Kedua -->
             <tbody>
               <tr class="hover:bg-gray-100">
                 <td class="px-4 py-2 border text-center">2.</td>
@@ -312,7 +314,7 @@
                   </div>
                 </td>
               </tr>
-            </tbody>
+            </tbody> --}}
           </table>
 
           <!-- Button CLick  jika sudah Selesai -->
@@ -321,7 +323,11 @@
               class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 mb-1 hover:bg-blue-700"
             >
               <i class="material-symbols-outlined mr10"
-                ><a href="Jurnal_Mengajar.html">arrow_forward_ios</a>
+                ><a href="{{route('jurnal',
+                ['id'=>$user->id,
+                            'jadwalids'=>$jadwal->id,
+                            'kelasid'=>$jadwal->kelas->id,
+                            'mapelid'=>$mapel->id])}}">arrow_forward_ios</a>
               </i>
             </button>
           </div>

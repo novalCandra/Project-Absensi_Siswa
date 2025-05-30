@@ -28,7 +28,27 @@ class JurnalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id'=>'required|exists:users,id',
+            'mapel_id'=>'required|exists:mapels,id',
+            'kelas_id'=>'required|exists:kelas,id',
+            'tanggal'=>'required|date',
+            'waktu_mulai'=>'required',
+            'waktu_selesai'=>'required',
+            'catatan'=>'nullable|string',
+        ]);
+
+        Jurnal::create([
+            'user_id' => auth()->id(), // atau dari inputan
+            'mapel_id' => $request->mapel_id,
+            'kelas_id' => $request->kelas_id,
+            'tanggal' => $request->tanggal, // atau $request->tanggal
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'catatan' => $request->catatan,
+        ]);
+
+        return redirect()->back()->with('success','Jurnal berhasil disimpan');
     }
 
     /**
