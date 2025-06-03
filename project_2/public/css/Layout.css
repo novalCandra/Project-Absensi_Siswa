@@ -17,7 +17,7 @@
         /* Sidebar styling */
         .sidebar {
             width: var(--sidebar-width);
-            background: var(--sidebar-bg);
+            background: #1E3A8A;
             color: var(--sidebar-color);
             position: fixed;
             height: 100vh;

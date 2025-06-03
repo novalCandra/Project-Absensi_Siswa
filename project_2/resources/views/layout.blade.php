@@ -32,10 +32,11 @@
                 </a>
             </li>
             <li class="nav-item mt-auto">
-                <a href="#" class="nav-link">
+                <div href="#" class="nav-link">
                     <i class="fa-solid fa-circle-user"></i>
                     <span>{{ Auth::user()->name}}</span>
-                </a>
+                    <a href="{{route('login')}}" class="btn btn-outline-danger">Logout</a>
+                </div>
             </li>
         </ul>
     </div>

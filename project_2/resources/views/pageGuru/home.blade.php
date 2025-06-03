@@ -42,12 +42,7 @@
               </span>
               <span class="font-bold">HOME</span>
             </a>
-
-            <a href="{{route('jadwal',['id'=>$user->id])}}" class="flex items-center space-x-2">
-              <span class="material-symbols-outlined"> event </span>
-              <span class="font-bold">MENGAJAR</span>
-            </a>
-
+            
             <a href="{{route('profil',['id'=>$user->id])}}" class="flex items-center space-x-2">
               <span class="material-symbols-outlined"> person </span>
               <span class="font-bold">PROFILE</span>
